@@ -1,0 +1,15 @@
+Tak-manager
+- Authentication
+- User Profile
+- Login-Logout
+- Task CRUD
+
+//setup part
+- vue Js
+- axios clint (For Api Request)--(npm i axios)
+- vue-router (for routing)
+- pinia (for state)
+- cogo-toast (an npm pacage for error handeling)
+- nprogress (Topber progress)
+
+-Templating
