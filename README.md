@@ -1,23 +1,36 @@
 ## 🔄 Workflow
 
-```mermaid
-flowchart TD
+User (Frontend - Vue)
+        |
+        v
+[ Login / Register ]
+        |
+        v
+Laravel Backend (Auth Controller)
+        |
+        v
+Database (User stored)
 
-A[User opens Vue Frontend] --> B[Login / Register]
-B -->|POST /api/register or /api/login| C[Laravel Backend - Auth Controller]
-C -->|Validates + returns token| D[Frontend stores token]
+------------------------------------------
 
-D --> E[User Dashboard - Task List]
-E -->|GET /api/tasks| F[Backend - Task Controller -> Database]
-F -->|Returns JSON task list| E
+After login:
 
-E --> G[Create Task]
-G -->|POST /api/tasks| F
+User Dashboard (Vue)
+        |
+        v
+Request --> [ Laravel API (Task Controller) ] --> Database
+        |                |       ^
+        |                v       |
+        |<--- JSON Response -----|
 
-E --> H[Update Task]
-H -->|PUT /api/tasks/{id}| F
+Actions:
+- Create Task   -> POST /api/tasks
+- View Tasks    -> GET /api/tasks
+- Update Task   -> PUT /api/tasks/{id}
+- Delete Task   -> DELETE /api/tasks/{id}
 
-E --> I[Delete Task]
-I -->|DELETE /api/tasks/{id}| F
+------------------------------------------
 
-F -->|Updated data| E
+Result:
+- Frontend updates the UI with the latest data
+- Tasks are stored in database via Laravel API
